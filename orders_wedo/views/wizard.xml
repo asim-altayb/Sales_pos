@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="point_of_sale.view_pos_details_wizard" model="ir.ui.view">
+            <field name="name">pos.details.wizard.form</field>
+            <field name="model">pos.details.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sales Details">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                    </group>
+                    <group>
+                        <field name="end_date"/>
+                    </group>
+                </group>
+                    <group>
+                    <field name="products" />
+                    </group>
+                    <group>
+                        <field name="pos_config_ids" mode="tree" colspan="4" nolabel="1" />
+                    </group>
+                    <footer>
+                        <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="search_inh_orders" model="ir.ui.view">
+                <field name="name">pos_order_search</field>
+                <field name="model">pos.order</field>
+                <field name="inherit_id" ref="point_of_sale.view_pos_order_search"/>
+                <field name="arch" type="xml">
+                    <search position="replace">
+                            <search>
+                                <field name="pos_reference"/>
+                                <field name="user_id"/>
+                            </search>
+                    </search>
+			    </field>
+    </record>
+
+</odoo>
